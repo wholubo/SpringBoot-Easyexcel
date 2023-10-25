@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wlb.file.mapper.UserMapper">
+
+    <select id="getAll" resultType="User">
+        SELECT id, name, sex, age, birthday FROM user
+    </select>
+
+
+    <insert id="saveBatch">
+        insert into user (name,sex,age,birthday)
+        values
+        <foreach collection="list" separator="," item="user">
+            (#{user.name},#{user.sex},#{user.age},#{user.birthday})
+        </foreach>
+    </insert>
+
+</mapper>

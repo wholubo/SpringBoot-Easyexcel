@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wlb.file.mapper.TerminalMapper">
+
+    <insert id="saveBatch">
+        insert into idc_terminal (id, dev_no, product_id, add_time, agent_no, p_agent_no)
+        values
+        <foreach collection="list" separator="," item="tr">
+            (#{tr.id},#{tr.devNo},#{tr.productId},#{tr.addTime},#{tr.agentNo},#{tr.pAgentNo})
+        </foreach>
+    </insert>
+
+</mapper>

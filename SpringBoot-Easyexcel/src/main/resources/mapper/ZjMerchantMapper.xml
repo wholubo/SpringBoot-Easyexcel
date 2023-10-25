@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wlb.file.mapper.ZjMerchantMapper">
+
+    <insert id="saveBatch">
+        insert into idc_zj_merchant (sn_code,mch_no,mch_name,mch_short_ame,contact_tel,contact_name,id_no_type,id_no)
+        values
+        <foreach collection="list" separator="," item="zj">
+            (#{zj.snCode},#{zj.mchNo},#{zj.mchName},#{zj.mchShortAme},#{zj.contactTel},#{zj.contactName},#{zj.idNoType},#{zj.idNo})
+        </foreach>
+    </insert>
+
+</mapper>

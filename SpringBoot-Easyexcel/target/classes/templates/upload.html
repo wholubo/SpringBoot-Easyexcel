@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<body>
+<!--浏览器回退方法，相当于返回上一页，不会新开页面-->
+<!--<a onclick="history.back(-1)"><input type="button" value="返回主页"/></a><br/>-->
+<!--后台跳转方法，新开一个index页面-->
+<a href="/user/toIndex"><input type="button" value="返回主页"/></a><br/>
+<h1>上传Excel</h1>
+<form method="POST" action="/user/upload" enctype="multipart/form-data">
+    <input type="file" name="file"/><br/><br/>
+    <input type="submit" value="提交"/>
+</form>
+</body>
+</html>

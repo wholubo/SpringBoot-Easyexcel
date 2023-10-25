@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>用户列表页</title>
+    <!-- 项目启动之后实际生效的是th:href，href里面的在项目里面不生效了，但是设置成这样直接浏览器打开的时候会生效，方便我调页面-->
+    <link rel="stylesheet" href="../static/css/index.css" th:href="@{/static/css/index.css}">
+    <script type="text/javascript" src="../static/js/jquery-2.1.1.min.js" th:src="@{/static/js/jquery-2.1.1.min.js}"></script>
+</head>
+<body>
+    <input id="findAll" type="button" value="查询全部users"/>
+    <a href="/user/toUploadPage" class="skip"><input type="button" value="跳转上传页面"/></a>
+    <a href="/user/exportWeb" class="skip"><input type="button" value="导出为excel表"/></a>
+<table>
+    <tr>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>年龄</th>
+        <th>出生日期</th>
+    </tr>
+    <tbody id="userTable"></tbody>
+</table>
+
+<script type="text/javascript">
+
+    $("#findAll").click(function (){
+        $.ajax({
+            type:"POST",
+            url:"/user/getAll",
+            data:{},
+            success:function (list){
+                var html;
+                for(var i=0;i<list.length;i++){
+                    html+="<tr><td>"+list[i].name+"</td><td>"+list[i].sex+"</td><td>"+list[i].age+"</td><td>"+list[i].birthday.slice(0,10)+"</td></tr>"
+                }
+                $("#userTable").html(html);
+            }
+        })
+    })
+</script>
+</body>
+</html>
